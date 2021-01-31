@@ -1,6 +1,7 @@
 const Joi = require('joi');
 const mongoose = require('mongoose');
-const signupRoutes = require('./routes/signup');
+const usersRoutes = require('./routes/users');
+const atuhRoutes = require('./routes/auth');
 const express = require('express');
 const app = express();
 
@@ -14,7 +15,8 @@ mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 
 app.use(express.json());
-app.use('/signup', signupRoutes);
+app.use('/users', usersRoutes);
+app.use('/login', atuhRoutes);
 
 const port = process.env.PORT || 555
 app.listen(port, () => console.log(`Listening on port ${port}...`));
